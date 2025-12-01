@@ -1,8 +1,7 @@
 i,HO Ten,quancu,phuongmoi
 0,VU Giang Nam,q10,Vuon Lai
 1,Le Hoang Long,q12,Thoi An
-1,Nguyen Le Thien An,My Tho,My Tho DongThap
-2,,,
+2,Nguyen Le Thien An,My Tho,My Tho DongThap
 3,nguyenducnghia,govap,govap
 4,,,
 5,Doan Son Tung, Q12, Ha Huy Giap
