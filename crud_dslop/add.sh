@@ -8,4 +8,3 @@ echo 'Ten MOI' >> ./dslop.html
 
 # them tro lai </pre>
 echo '</pre>'  >> ./dslop.html
-echo ''        >> ./dslop.html
