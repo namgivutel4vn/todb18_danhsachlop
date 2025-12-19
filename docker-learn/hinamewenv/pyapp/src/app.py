@@ -1,2 +1,3 @@
-'';         name = 'TODO doc tu envvar'
-print(f'Hi {name}!')
+import os
+'';         name_fr_envvar = os.environ.get('NAME')
+print(f'Hi {name_fr_envvar}!')
