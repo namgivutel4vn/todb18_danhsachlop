@@ -9,5 +9,6 @@ docker build -t hinamewenv-i . --progress=plain --no-cache
 
 # run
 echo
-docker run -e NAME="$1" hinamewenv-i
 #      run -e key=val  truyen bien moi truong de CHAY container ; chuy KHONG PHAI de BUILD
+docker run -e NAME="${1:-Tel4vn TODB18 2025}" hinamewenv-i
+#                   ${ :-giatri khi bien rong}
