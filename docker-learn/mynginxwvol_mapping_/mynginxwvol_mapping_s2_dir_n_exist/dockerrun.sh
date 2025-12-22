@@ -6,6 +6,6 @@ docker run \
   -v ./v/:/usr/share/nginx/html/ \
   nginx:alpine-slim
 
-comment<<EOT
+comment=cat<<EOT
 khi thumuc ko tontai thi se tao thumuc rong va thong voi c
 EOT
