@@ -1,0 +1,17 @@
+services:
+  mynginx-volume-c:
+    image: nginx:alpine-slim
+
+    ports:
+      - 880:80
+
+    # environment:
+    #   - NAME=todb18 2025
+
+    command: |
+      sh -c '
+        echo "Hi $NAME!" > /usr/share/nginx/html/index.html;
+        
+        echo goi entrypoint cua nginx  ref docker inspect nginx:alpine-slim --format "{{.Config.Cmd}}" ;
+        nginx -g "daemon off;"
+      '

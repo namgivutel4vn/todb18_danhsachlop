@@ -1,0 +1,9 @@
+services:
+  mynginx-volume-c:
+    image: nginx:alpine-slim
+    ports:
+      - 880:80
+    volumes:
+      - mynginx-v:/usr/share/nginx/html/
+volumes:
+  mynginx-v:
