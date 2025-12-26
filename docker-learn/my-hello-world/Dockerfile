@@ -1,2 +1,2 @@
 FROM alpine
-CMD echo 'My hellow world!'
+CMD echo 'My hello world!'
