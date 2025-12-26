@@ -8,6 +8,12 @@ COPY ./pyproject.toml  .
 COPY ./uv.lock         .
 #    . context         . WORKDIR
 
-# RUN uv sync
+RUN uv sync
 
-CMD pwd;ls -lah;pwd
+COPY ./src/app.py ./src/app.py
+#    . context    . WORKDIR
+
+EXPOSE 5000
+
+#CMD pwd;ls -lah;pwd
+CMD uv run  python3 ./src/app.py
