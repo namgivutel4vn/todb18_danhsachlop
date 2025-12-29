@@ -1,6 +1,5 @@
 services:
-#  flask_apiapp_c:
-  cabbccc:
+  c:
     build: .
     image: flask-apiapp-i
 
@@ -20,6 +19,5 @@ services:
   c_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
     image: busybox  # smallest linux i
     depends_on:
-#      flask_apiapp_c:
-      cabbccc:
+      c:
         condition: service_healthy
