@@ -8,7 +8,9 @@ services:
     container_name: flask_apiapp_c
 
     healthcheck:  # ensure container up w/ healthy running
-      test: ['CMD-SHELL', 'nc -z localhost 5000']
+      #TODO simpler test cmd with block syntax |
+      test: ['CMD-SHELL', 'nc -z -w1 127.0.0.1 5000']
+      #                    nc        127.0.0.1 CAUTION dont use localhost here ; must use 127.0.0.1 instead
       retries:  6
       timeout:  2s
       interval: 3s
