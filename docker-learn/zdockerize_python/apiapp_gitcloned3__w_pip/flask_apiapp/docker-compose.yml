@@ -1,8 +1,20 @@
 services:
-  c:
+  flask_apiapp_c:
     build: .
     image: flask-apiapp-i
 
     ports:
       - 22333:5000
     container_name: flask_apiapp_c
+
+    healthcheck:  # ensure container up w/ healthy running
+      test: ['CMD-SHELL', 'nc -z localhost 5000']
+      retries:  6
+      timeout:  2s
+      interval: 3s
+
+  c_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
+    image: busybox  # smallest linux i
+    depends_on:
+      flask_apiapp_c:
+        condition: service_healthy
