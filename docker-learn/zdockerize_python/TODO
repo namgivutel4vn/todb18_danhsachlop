@@ -1,6 +1,6 @@
 dockerize py app by
-00 pip WIP
-01 pipenv TODO
+00 pip DONE
+01 pipenv SKIPPED as we have better util uv to do the job
 02 uv DONE
 
 TODO ensure container up w/ healthy running
