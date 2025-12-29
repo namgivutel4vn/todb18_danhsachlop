@@ -1,0 +1,12 @@
+services:
+  c:
+    build:
+      #           . dir/ contain this yml file
+      context:    ./../flask_apiapp
+      dockerfile:                 ./../zdocker/Dockerfile
+      #                           ./ relative to context dir/ above
+    image: flask-apiapp-i
+
+    ports:
+      - 22333:5000
+    container_name: flask_apiapp_c
