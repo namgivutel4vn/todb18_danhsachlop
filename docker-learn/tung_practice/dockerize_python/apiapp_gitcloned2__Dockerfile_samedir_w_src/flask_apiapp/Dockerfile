@@ -1,0 +1,17 @@
+FROM python:3.12-alpine
+
+# inastall uv
+RUN python3 -m pip install --upgrade pip uv
+
+WORKDIR /app
+COPY ./pyproject.toml .
+
+# install dependencies
+RUN uv sync
+
+COPY ./src/app.py ./src/app.py
+
+EXPOSE 5000
+
+#CMD pwd;ls -lah;pwd
+CMD uv run python3 ./src/app.py
