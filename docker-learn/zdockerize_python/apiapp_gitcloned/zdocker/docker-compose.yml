@@ -1,0 +1,28 @@
+services:
+  c:
+    build:
+      #           . dir/ contain this yml file
+      context:    ./../flask_apiapp
+      dockerfile:                 ./../zdocker/Dockerfile
+      #                           ./ relative to context dir/ above
+    image: flask-apiapp-i
+
+    ports:
+      - 33300:5000
+    container_name: flask_apiapp_c
+
+    healthcheck:  # ensure container up w/ healthy running
+      test: |
+        nc -z -w1 127.0.0.1 5000
+        #         127.0.0.1 CAUTION dont use localhost here ; must use 127.0.0.1 instead
+        #  -z zero-data sent
+      retries:  6
+      timeout:  2s
+      interval: 3s
+
+  c_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
+    image: busybox  # smallest linux i
+    depends_on:
+      c:
+        condition: service_healthy
+    container_name: flask_apiapp_c_wait4healthy
