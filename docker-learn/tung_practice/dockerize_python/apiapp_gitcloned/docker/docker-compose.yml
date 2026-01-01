@@ -1,0 +1,12 @@
+services:
+  c:
+    build:
+      context: ./../flask_apiapp
+      dockerfile: ./../docker/Dockerfile
+
+    image: flask-apiapp-i
+
+    ports:
+      - 22333:5000
+
+    container_name: flask_apiapp_c
