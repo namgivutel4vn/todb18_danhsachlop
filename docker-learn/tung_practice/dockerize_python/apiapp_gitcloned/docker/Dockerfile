@@ -12,6 +12,7 @@ COPY ./uv.lock .
 RUN uv sync
 
 COPY ./src/app.py ./src/app.py
+COPY ./src/service/db/dslop.json ./src/service/db/dslop.json
 
 EXPOSE 5000
 

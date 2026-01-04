@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sach Lop</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2 f2 f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh Sach Lop</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ tên</th>
+                <th>Quận cũ</th>
+                <th>Phường mới</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dslop %}
+            <tr>
+                <td>{{ item.i }}</td>
+                <td>{{ item.hoten }}</td>
+                <td>{{ item.quancu }}</td>
+                <td>{{ item.phuongmoi }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
