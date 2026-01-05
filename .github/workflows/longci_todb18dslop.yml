@@ -1,0 +1,37 @@
+name: cilong_getstarted_workflowdispatch
+
+
+on:
+
+  workflow_dispatch:
+
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-22.04
+
+  steps:
+
+    - name: ssh auth check to vm todb18
+
+      uses: appleboy/ssh-action@v1.0.3
+
+      with:
+
+        key: ${{ secrets.SSH_PRIVATEKEY_LONG }}
+
+        username: long
+
+        host: 47.129.1.184
+
+        script: |
+
+    hostname
+
+    echo "USER=$USER"
+
+    ls -al
+
+    pwd
