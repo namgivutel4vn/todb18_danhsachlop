@@ -1,5 +1,4 @@
 name: citung_dispatch
-
 on:
   workflow_dispatch:
 
@@ -8,4 +7,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Greeting
-        run: echo "Hello Tung"
+        run: |
+          echo "Hello Tung"
