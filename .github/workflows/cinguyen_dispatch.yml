@@ -1,0 +1,17 @@
+name: cinguyen_dispatch
+
+on:
+  push:
+    branches:
+      - nam
+      - ci/nam
+
+jobs:
+  deploy_job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Say hello
+        run: echo "hello nguyen"
