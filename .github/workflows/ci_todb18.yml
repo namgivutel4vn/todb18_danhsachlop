@@ -5,16 +5,4 @@ on:
 
 jobs:
   job1_name:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: job1_step1
-      run: |
-        echo job1_step1 cmd1
-        echo job1_step1 cmd2
-
-    - name: job1_step2
-      run: |
-        echo job1_step2 cmd3
-        echo job1_step2 cmd4
-                
+    runs-on: ubuntu-22.04
