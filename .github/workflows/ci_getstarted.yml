@@ -1,4 +1,4 @@
-name: ci_todb18
+name: ci_getstarted
 
 on:
   workflow_dispatch:

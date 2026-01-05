@@ -1,0 +1,21 @@
+name: ci_runongitpush
+
+on:
+  # run when git pushed to branch nam
+  push:
+    branches:
+      - nam
+      - ci/nam
+
+#on:
+#  # run when git pushed to branch nam
+#  push:
+#    branches: [nam, ci/nam]
+
+jobs:
+  deploy_job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: --- TODO step
+        run: |
+          echo TODO
