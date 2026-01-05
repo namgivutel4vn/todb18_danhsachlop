@@ -1,9 +1,6 @@
 name: cinguyen_dispatch
 
 on:
-  push:
-    branches:
-      - nam
   workflow_dispatch:
 
 jobs:
