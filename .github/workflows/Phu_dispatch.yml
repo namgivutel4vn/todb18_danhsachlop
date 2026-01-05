@@ -1,0 +1,13 @@
+# This is a basic workflow that is manually triggered
+
+name: Phu_dispatch
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  jobs1:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Send greeting
+      run: echo "Hello Phu CI"
