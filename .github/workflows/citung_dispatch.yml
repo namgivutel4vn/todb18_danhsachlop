@@ -1,11 +1,17 @@
 name: citung_dispatch
+
 on:
   workflow_dispatch:
 
 jobs:
-  welcome_job:
+  job1:
     runs-on: ubuntu-22.04
     steps:
-      - name: Greeting
-        run: |
-          echo "Hello Tung"
+      - name: Check date
+        run: date
+
+  job2:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Print out something
+        run: echo 12345
