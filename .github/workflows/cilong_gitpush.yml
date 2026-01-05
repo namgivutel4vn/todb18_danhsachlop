@@ -1,0 +1,15 @@
+name: cilong_gitpush
+
+
+on: 
+  push:
+    branches:
+    - long
+ 
+jobs:
+  job1:
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: check date
+      run: date

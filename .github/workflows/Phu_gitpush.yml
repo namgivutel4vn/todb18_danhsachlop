@@ -1,0 +1,12 @@
+name: Phu_gitpush
+on:
+  push:
+    branches:
+      - phu
+jobs:
+  deploy_job:
+    runs-on: ubuntu-22.04
+    steps:
+     - name: -- Phu Todo steps
+       run: |
+         echo TODO Phu

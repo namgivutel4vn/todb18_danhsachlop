@@ -1,0 +1,23 @@
+name: cinguyen.gitpush
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1_name:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: job1_step1
+        run: echo 122
+
+  job2:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: job2_step1
+        run: |  # block syntax | to write multi-line
+          echo job2
+          echo step1
+      - name: another step in job2
+        run: |
+          echo 1
+          echo 22
