@@ -14,9 +14,18 @@ jobs:
       with:
         key: ${{ secrets.SSH_PRIVATEKEY_LONG }}
         username: long
-        host: 47.129.1.184
+        host: 52.221.30.212
         script: |
-         hostname
-         echo "USER=$USER"
-         ls -al
-         pwd
+          printf '\n--- git pull latest code\n'
+          cd /home/long/_/todb18_danhsachlop
+          git fetch --all
+          git switch -C long origin/long
+
+          printf '\n--- run compose up to update flask webapp\n'
+          cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+          ./zcomposebuildup.sh
+
+
+
+
+          
