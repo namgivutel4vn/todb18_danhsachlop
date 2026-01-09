@@ -1,0 +1,22 @@
+name: ciphu_todb18dslop
+on:
+  workflow_dispatch:
+
+jobs:
+  
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      #TODO help me auth the ci runner with my vm only
+      - name: --- ssh to vm todb18
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          key:      ${{ secrets.SSH_PRIVATEKEY_PHU }}
+          username: nam
+          host:     47.129.1.184
+          script: |
+            hostname
+            echo "USER=$USER"
+            pwd
+            ls -la
+            pwd
