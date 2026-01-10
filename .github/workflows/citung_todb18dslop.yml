@@ -6,7 +6,7 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - name: --- ssh to vm todb18
+      - name: ssh to vm todb18
         uses: appleboy/ssh-action@v1.0.3
         with:
           key: ${{ secrets.SSH_PRIVATEKEY_TUNG }}
