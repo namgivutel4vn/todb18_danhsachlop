@@ -9,8 +9,8 @@ jobs:
       - name: ssh to vm todb18
         uses: appleboy/ssh-action@v1.0.3
         with:
-          key: ${{ secrets.SSH_PRIVATEKEY_TUNG }}
-          username: tung
+          key: ${{ secrets.SSH_PRIVATEKEY_LONG }}
+          username: long
           host: 52.221.30.212
           script: |
             hostname
