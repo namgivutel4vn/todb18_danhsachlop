@@ -1,4 +1,4 @@
-name: citung_todb18dslop
+name: citung_todb18dslop_local
 on:
   workflow_dispatch:
 
