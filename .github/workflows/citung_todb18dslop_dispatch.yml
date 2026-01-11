@@ -1,0 +1,35 @@
+name: citung_todb18dslop_dispatch
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: ssh to vm todb18
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          key: ${{ secrets.SSH_PRIVATEKEY_TUNG }}
+          username: tung
+          host: 52.221.30.212
+          script: |
+            printf '\n--- Pull latest code\n'
+            cd /home/tung/todb18_danhsachlop
+            git fetch --all
+            git switch -C tung_practice origin/tung_practice
+
+            printf '\n--- Access to docker-compose directory\n'
+            cd ./docker-learn/tung_practice/dockerize_python/webapp_gitcloned/flask_webapp/docker
+
+            printf '\n--- Run compose down to start with clean environment\n'
+            ./composedown.sh
+
+            printf '\n--- Run compose up to start or update flask apiapp\n'
+            ./composebuildup.sh
+
+            printf 'Check container status\n'
+            docker ps | grep tung_flask
+
+            printf '\n--- Test flask apiapp endpoint\n'
+            curl http://localhost:33405/
