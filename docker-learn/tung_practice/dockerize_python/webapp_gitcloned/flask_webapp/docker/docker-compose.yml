@@ -48,7 +48,7 @@ services:
     image: flask-apiapp-i
 
     ports:
-      - 33300:5000
+      - 33305:5000
     container_name: tung_flask_apiapp_c
 
     healthcheck:
