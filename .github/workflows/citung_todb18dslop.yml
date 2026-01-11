@@ -16,19 +16,19 @@ jobs:
             printf '\n--- Pull latest code\n'
             cd /home/tung/todb18_danhsachlop
             git fetch --all
-            git switch -C tung origin/tung
+            git switch -C tung_practice origin/tung_practice
 
             printf '\n--- Access to docker-compose directory\n'
             cd ./docker-learn/tung_practice/dockerize_python/webapp_gitcloned/flask_webapp/docker
 
             printf '\n--- Run compose down to start with clean environment\n'
-            ./compose_down.sh
+            ./composedown.sh
 
             printf '\n--- Run compose up to start or update flask apiapp\n'
-            ./compose_buildup.sh
+            ./composebuildup.sh
 
-            printf 'Check flask apiapp container status\n'
-            docker ps | grep tung_flask_apiapp_c
+            printf 'Check container status\n'
+            docker ps | grep tung_flask
 
             printf '\n--- Test flask apiapp endpoint\n'
             curl http://localhost:33405/
