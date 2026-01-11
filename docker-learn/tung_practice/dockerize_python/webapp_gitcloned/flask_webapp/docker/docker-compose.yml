@@ -14,7 +14,7 @@ services:
     image: flask-webapp-i
 
     ports:
-      - 33400:5000
+      - 33405:5000
     container_name: tung_flask_webapp_c
 
     environment:

@@ -14,11 +14,12 @@ jobs:
           host: 52.221.30.212
           script: |
             printf '\n--- Pull latest code\n'
+            cd /home/tung/todb18_danhsachlop
             git fetch --all
             git switch -C tung origin/tung
 
             printf '\n--- Access to docker-compose directory\n'
-            cd /home/tung/todb18_danhsachlop/docker-learn/tung_practice/dockerize_python/webapp_gitcloned/flask_webapp/docker
+            cd ./docker-learn/tung_practice/dockerize_python/webapp_gitcloned/flask_webapp/docker
 
             printf '\n--- Run compose down to start with clean environment\n'
             ./compose_down.sh
@@ -26,5 +27,8 @@ jobs:
             printf '\n--- Run compose up to start or update flask apiapp\n'
             ./compose_buildup.sh
 
+            printf 'Check flask apiapp container status\n'
+            docker ps | grep tung_flask_apiapp_c
+
             printf '\n--- Test flask apiapp endpoint\n'
-            curl http://localhost:33400/
+            curl http://localhost:33405/
