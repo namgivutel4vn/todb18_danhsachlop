@@ -13,8 +13,18 @@ jobs:
           username: tung
           host: 52.221.30.212
           script: |
-            hostname
-            echo "USER=$USER"
-            pwd
-            ls -la
-            pwd
+            printf '\n--- Pull latest code\n'
+            git fetch --all
+            git switch -C tung origin/tung
+
+            printf '\n--- Access to docker-compose directory\n'
+            cd /home/tung/docker-learn/tung_practice/dockerize_python/apiapp_gitcloned/flask_apiapp
+
+            printf '\n--- Run compose down to start with clean environment\n'
+            ./compose_down.sh
+
+            printf '\n--- Run compose up to start or update flask apiapp\n'
+            ./compose_buildup.sh
+
+            printf '\n--- Test flask apiapp endpoint\n'
+            curl http://localhost:33400/
