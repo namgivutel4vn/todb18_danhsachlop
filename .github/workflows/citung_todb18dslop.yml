@@ -18,7 +18,7 @@ jobs:
             git switch -C tung origin/tung
 
             printf '\n--- Access to docker-compose directory\n'
-            cd /home/tung/docker-learn/tung_practice/dockerize_python/apiapp_gitcloned/flask_apiapp
+            cd /home/tung/todb18_danhsachlop/docker-learn/tung_practice/dockerize_python/webapp_gitcloned/flask_webapp/docker
 
             printf '\n--- Run compose down to start with clean environment\n'
             ./compose_down.sh
