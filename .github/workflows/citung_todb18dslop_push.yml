@@ -1,6 +1,9 @@
-name: citung_todb18dslop
+name: citung_todb18dslop_push
+
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - tung_practice
 
 jobs:
   deploy:
