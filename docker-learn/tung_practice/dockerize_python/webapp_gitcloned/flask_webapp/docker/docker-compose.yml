@@ -15,7 +15,7 @@ services:
 
     ports:
       - 33400:5000
-    container_name: flask_webapp_c
+    container_name: tung_flask_webapp_c
 
     environment:
       - API_URL_dslop=http://apiapp:5000/dslop
@@ -35,7 +35,7 @@ services:
     depends_on:
       webapp:
         condition: service_healthy
-    container_name: flask_webapp_c__wait4healthy
+    container_name: tung_flask_webapp_c__wait4healthy
   #endregion webapp
 
   #TODO mv compose yml into outer dir level to see apiapp and webapp at same folder level eg at ...dockerize_python/
@@ -49,7 +49,7 @@ services:
 
     ports:
       - 33300:5000
-    container_name: flask_apiapp_c
+    container_name: tung_flask_apiapp_c
 
     healthcheck:
       test: |
@@ -65,5 +65,5 @@ services:
     depends_on:
       apiapp:
         condition: service_healthy
-    container_name: flask_apiapp_c__wait4healthy
+    container_name: tung_flask_apiapp_c__wait4healthy
   #endregion apiapp
