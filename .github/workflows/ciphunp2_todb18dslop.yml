@@ -9,19 +9,19 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - name: SSH auth check to VM todb18
+      - name: SSH deploy to VM todb18
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 52.221.30.212
           username: phunp2
+          port: 22
           key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script_stop: true
+          debug: true
           script: |
-            printf '\n--- git pull latest code\n'
+            set -e
             cd /home/phunp2/_/todb18_danhsachlop
             git fetch --all
             git switch -C phunp2 origin/phunp2
-
-            printf '\n--- run compose up to update flask webapp\n'
             cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
             ./zcomposebuildup.sh
