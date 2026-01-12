@@ -6,21 +6,20 @@ on:
 
 
 jobs:
+  
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - name: SSH auth check to VM todb18
+      #TODO help me auth the ci runner with my vm only
+      - name: --- ssh to vm todb18
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 52.221.30.212
+          key:      ${{ secrets.SSH_PRIVATEKEY_NAM }}
           username: phunp2
-          key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
+          host:     52.221.30.212
           script: |
-            printf '\n--- git pull latest code\n'
-            cd /home/phunp2/_/todb18_danhsachlop
-            git fetch --all
-            git switch main
-            git reset --hard origin/main
-            printf '\n--- run compose up to update flask webapp\n'
-            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
-            ./zcomposebuildup.sh
+            hostname
+            echo "USER=$USER"
+            pwd
+            ls -la
+            pwd
