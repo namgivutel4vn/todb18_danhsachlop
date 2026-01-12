@@ -15,14 +15,14 @@ jobs:
           username: nguyen
           key: ${{ secrets.SSH_PRIVATEKEY_NGUYEN }}
           script: |
-            echo "----- Pull latest code -----"
+            printf '\n--- git pull latest code\n'
             cd /home/nguyen/_/todb18_danhsachlop
             git fetch --all
             git switch -C nguyen origin/nguyen
-
-            echo "----- Build & deploy containers -----"
-            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+            
+            printf '\n--- run compose up to update flask webapp\n'
+            cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
             ./zcomposebuildup.sh
 
-            echo "----- Deploy done -----"
+
 
