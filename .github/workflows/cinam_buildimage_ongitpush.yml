@@ -7,15 +7,14 @@ on:
   # also allow manual run this ci
   workflow_dispatch:
 
-#on:
-#  # run when git pushed to branch nam
-#  push:
-#    branches: [nam, ci/nam]
-
 jobs:
   deploy_job:
     runs-on: ubuntu-22.04
     steps:
-      - name: --- TODO step ci/nam-build
+      - name: --- checkout source code
+        uses: actions/checkout@v4
+
+      - name: ---
         run: |
+          git log --oneline -2
           echo TODO ci/nam-build
