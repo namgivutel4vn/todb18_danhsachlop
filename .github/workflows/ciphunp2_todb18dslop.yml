@@ -17,7 +17,7 @@ jobs:
             printf '\n--- git pull latest code\n'
             cd /home/phunp2/_/todb18_danhsachlop
             git fetch --all
-            git switch -C phunp2 origin/main
+            git switch -C phunp2 origin/phunp2
 
             printf '\n--- run compose up to update flask webapp\n'
             cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
