@@ -1,4 +1,4 @@
-name: nguyenci_todb18dslop
+name: ci_nguyen_deploy
 
 on:
   workflow_dispatch:
@@ -8,20 +8,20 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: SSH deploy to VM (nguyen)
+      - name: SSH deploy to VM 
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 52.221.30.212
           username: nguyen
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_NGUYEN }}
           script: |
-            echo "--- git pull latest code"
+            echo "----- Pull latest code -----"
             cd /home/nguyen/_/todb18_danhsachlop
             git fetch --all
             git switch -C nguyen origin/nguyen
 
-            echo "--- run compose up to update flask webapp"
-            cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+            echo "----- Build & deploy containers -----"
+            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
             ./zcomposebuildup.sh
 
-          
+            echo "----- Deploy done -----"
