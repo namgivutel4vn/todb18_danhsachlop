@@ -15,8 +15,11 @@ jobs:
           username: nam
           host:     47.129.1.184
           script: |
-            hostname
-            echo "USER=$USER"
-            pwd
-            ls -la
-            pwd
+            printf '\n--- git pull latest code\n'
+            cd /home/nam/_/todb18_danhsachlop
+            git fetch --all
+            git switch -C nam origin/nam
+            
+            printf '\n--- run compose up to update flask webapp\n'
+            cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+            ./zcomposebuildup.sh

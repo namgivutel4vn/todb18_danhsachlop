@@ -3,9 +3,7 @@ name: cinam_runongitpush
 on:
   # run when git pushed to branch nam
   push:
-    branches:
-      - nam
-      - ci/nam
+    branches: [ci/nam, nam2]
 
 #on:
 #  # run when git pushed to branch nam
