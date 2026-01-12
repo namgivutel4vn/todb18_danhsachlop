@@ -7,13 +7,21 @@ jobs:
   deploy_job:
     runs-on: ubuntu-22.04
     steps:
-      - name: --- checkout source code
-        uses: actions/checkout@v4
-
-      - name: --- up stack webapp+apiapp fr image
-        run: |
-          cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker-image-fr-dockerhub
-          
-          docker compose \
-            -f ./docker-compose--image-fr-dockerhub.yml \
-            --progress=plain up --force-recreate -d  --remove-orphans
+      - name: --- ssh to vm todb18
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          key:      ${{ secrets.SSH_PRIVATEKEY_NAM }}
+          username: nam
+          host:     47.129.1.184
+          script: |
+            printf '\n--- git pull latest code\n'
+            cd /home/nam/_/todb18_danhsachlop
+            git fetch --all
+            git switch -C ci/nam-up origin/ci/nam-up  # branch that has this file to up docker-compose--image-fr-dockerhub.yml
+            
+            printf '\n--- up stack webapp+apiapp fr image\n'
+            cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker-image-fr-dockerhub
+            
+            docker compose \
+              -f ./docker-compose--image-fr-dockerhub.yml \
+              --progress=plain up --force-recreate -d  --remove-orphans
