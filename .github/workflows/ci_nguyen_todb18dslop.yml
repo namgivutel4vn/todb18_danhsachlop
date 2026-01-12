@@ -13,7 +13,7 @@ jobs:
         with:
           host: 52.221.30.212
           username: nguyen
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ SSH_PRIVATEKEY_NGUYEN }}
           script: |
             echo "----- Pull latest code -----"
             cd /home/nguyen/_/todb18_danhsachlop
