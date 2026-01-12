@@ -1,41 +1,26 @@
 name: ciphunp2_todb18dslop
 
+
 on:
   workflow_dispatch:
+
 
 jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      # 🔍 STEP 1: In PUBLIC KEY sinh trực tiếp từ SECRET (để copy sang VM)
-      - name: Print public key derived from secret
-        run: |
-          set -e
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATEKEY_PHU }}" > ~/.ssh/id_key
-          chmod 600 ~/.ssh/id_key
-          echo "===== PUBLIC KEY (COPY DONG NAY SANG authorized_keys) ====="
-          ssh-keygen -y -f ~/.ssh/id_key
-          echo "===== END PUBLIC KEY ====="
-
-      # 🚀 STEP 2: SSH deploy
       - name: SSH auth check to VM todb18
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 52.221.30.212
           username: phunp2
-          port: 22
           key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          debug: true
-          script_stop: true
           script: |
-            set -e
-
-            echo "--- git pull latest code"
+            printf '\n--- git pull latest code\n'
             cd /home/phunp2/_/todb18_danhsachlop
             git fetch --all
             git switch -C phunp2 origin/phunp2
 
-            echo "--- run compose up to update flask webapp"
+            printf '\n--- run compose up to update flask webapp\n'
             cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
             ./zcomposebuildup.sh
