@@ -1,26 +1,6 @@
-name: ciphunp2_todb18dslop
-
-
-on:
-  workflow_dispatch:
-
-
-jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: SSH auth check to VM todb18
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: 52.221.30.212
-          username: phunp2
-          key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          script: |
-            printf '\n--- git pull latest code\n'
-            cd /home/phunp2/_/todb18_danhsachlop
-            git fetch --all
-            git switch -C phunp2 origin/phunp2
-
-            printf '\n--- run compose up to update flask webapp\n'
-            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
-            ./zcomposebuildup.sh
+- name: Test SSH
+  run: |
+    mkdir -p ~/.ssh
+    echo "${{ secrets.SSH_PRIVATEKEY_PHU }}" > ~/.ssh/id_key
+    chmod 600 ~/.ssh/id_key
+    ssh -i ~/.ssh/id_key -o StrictHostKeyChecking=no -v phunp2@52.221.30.212 "whoami && hostname"
