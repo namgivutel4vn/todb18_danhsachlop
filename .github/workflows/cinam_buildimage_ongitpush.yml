@@ -16,6 +16,6 @@ jobs:
   deploy_job:
     runs-on: ubuntu-22.04
     steps:
-      - name: --- TODO step
+      - name: --- TODO step ci/nam-build
         run: |
-          echo TODO
+          echo TODO ci/nam-build
