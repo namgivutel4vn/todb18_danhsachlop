@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATEKEY_NGUYEN }}
           script: |
             printf '\n--- git pull latest code\n'
-            cd /home/nguyen/_/todb18_danhsachlop
+            cd /home/nguyen/todb18/todb18_danhsachlop
             git fetch --all
             git switch -C nguyen origin/nguyen
             
