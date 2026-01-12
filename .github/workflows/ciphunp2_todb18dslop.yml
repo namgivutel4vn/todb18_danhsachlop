@@ -13,13 +13,7 @@ jobs:
           host: 52.221.30.212
           username: phunp2
           key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: 22
+          debug: true
           script: |
-            printf '\n--- git pull latest code\n'
-            cd /home/phunp2/_/todb18_danhsachlop
-            git fetch --all
-            git switch -C phunp2 origin/phunp2
-
-            printf '\n--- run compose up to update flask webapp\n'
-            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
-            ./zcomposebuildup.sh
+            whoami
