@@ -56,7 +56,7 @@ jobs:
           
           #           =                             owner/repo
           i_owner_repo=${{ vars.NAM_DOCKERHUB_USERNAME }}/todb18dslop-apiapp
-          docker tag flask-webapp-i $i_owner_repo
+          docker tag flask-apiapp-i $i_owner_repo
           docker push               $i_owner_repo
 
       - name: --- test after pushed - 🔔webapp
