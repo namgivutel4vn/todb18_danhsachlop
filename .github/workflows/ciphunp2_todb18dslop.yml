@@ -1,31 +1,24 @@
 name: ciphunp2_todb18dslop
 
-
 on:
   workflow_dispatch:
-
 
 jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-    - name: ssh auth check to vm todb18
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
-        username: phunp2
-        host: 52.221.30.212
-        script: |
-          printf '\n--- git pull latest code\n'
-          cd /home/phunp2/_/todb18_danhsachlop
-          git fetch --all
-          git switch -C phunp2 origin/phunp2
+      - name: SSH auth check to VM todb18
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 52.221.30.212
+          username: phunp2
+          key: ${{ secrets.SSH_PRIVATEKEY_PHU }}
+          script: |
+            printf '\n--- git pull latest code\n'
+            cd /home/phunp2/_/todb18_danhsachlop
+            git fetch --all
+            git switch -C phunp2 origin/main
 
-          printf '\n--- run compose up to update flask webapp\n'
-          cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
-          ./zcomposebuildup.sh
-
-
-
-
-          
+            printf '\n--- run compose up to update flask webapp\n'
+            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+            ./zcomposebuildup.sh
