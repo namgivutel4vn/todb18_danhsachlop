@@ -39,5 +39,5 @@ jobs:
 
           docker compose \
             -f ./docker-compose--image-fr-dockerhub.yml \
-            --progress=plain up --force-recreate -d  --remove-orphans
+            --progress=plain up --force-recreate -d  --remove-orphans  --pull always
           EOSSH
