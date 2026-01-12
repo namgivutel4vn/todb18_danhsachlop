@@ -1,4 +1,4 @@
-name: cinam_runongitpush
+name: cinam_c0_runongitpush
 
 on:
   # run when git pushed to branch nam

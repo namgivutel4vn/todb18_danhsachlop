@@ -1,4 +1,4 @@
-name: cinam_todb18dslop
+name: cinam_c0_todb18dslop
 on:
   workflow_dispatch:
 
