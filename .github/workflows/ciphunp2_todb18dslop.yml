@@ -12,7 +12,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           key:      ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          username: nam
+          username: phunp2
           host:     52.221.30.212
           script: |
             printf '\n--- git pull latest code\n'
