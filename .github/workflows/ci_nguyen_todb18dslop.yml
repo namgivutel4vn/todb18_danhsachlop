@@ -15,14 +15,16 @@ jobs:
           username: nguyen
           key: ${{ secrets.SSH_PRIVATEKEY_NGUYEN }}
           script: |
-            printf '\n--- git pull latest code\n'
-            cd /home/nguyen/todb18/todb18_danhsachlop
-            git fetch --all
-            git switch -C nguyen origin/nguyen
-            
-            printf '\n--- run compose up to update flask webapp\n'
-            cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
-            ./zcomposebuildup.sh
+            echo "=== WHO AM I ==="
+            whoami
+          
+            echo "=== ADD PC KEY BACK ==="
+            mkdir -p /home/nguyen/.ssh
+            echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8rFRHES5c0lsBRG39BcV2cIUuroMrzPlXS9MSyShOA2wAJKBOpzf2mAr2tw22F/I4KbuyachoWuwvsMau5ZocXxcF+WBHPzV3yfSliPUC+T7c2DmSa3sBQc790MVZRaaScleetRdiw/CaYrHntQE861YArfBwIkC+33zz2cJmsTZV8ECMrkdmHmMKMbcfhce/NxKsHejPB90OURwK4l9fn6itnnsU1iWaMBnGPC8i15gvA0gZKHTjIRBdWG1rJUF51FPo46E9Iw0L5SqSBfK9WNWqWWUUVGRaoF8itPdL4512wdAF1B5Cz8eEi8AYeHxT9pQALsMt+klZehKoGfFiFuv4xCWT+dhKkkOdiBq2KTDI4SHBfp6XtNfTO6TBopFspV5D4J42VxRUi96JK7CBqn44Zf426P0BG94N9uyfSM7PitvHIAbY3jT0AZcGQD0A6K5y7ku8Fiig5yiPQlufI6rv6Dq9KwzcS5ClHnVlvfjz/D/Py2AejdB+QFq+eXJwFvzOBSGi/0FpugK61gNPgU01bGM16pfK+1671e7cdTA0IEiMh95yAJ5rBRuqfCPX1wV5J8AmuMS3c70Fpro4rn59R3h8XaxA3zFG51SAXIKs2aqjE4dTE/E32p3Ww3+CuR7Kaqzj+cPjcGAiBFsExTAwIjwCqiaes0ZQNGKEmw== PC OF ME@HieuNguyen" >> /home/nguyen/.ssh/authorized_keys
+          
+            chmod 700 /home/nguyen/.ssh
+            chmod 600 /home/nguyen/.ssh/authorized_keys
+
 
 
 
