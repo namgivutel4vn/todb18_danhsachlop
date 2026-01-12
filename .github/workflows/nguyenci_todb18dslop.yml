@@ -1,0 +1,26 @@
+name: nguyenci_todb18dslop
+
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: ssh auth check to vm todb18
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        key: ${{ secrets.SSH_PRIVATEKEY_Nguyen }}
+        username: long
+        host: 52.221.30.212
+        script: |
+          printf '\n--- git pull latest code\n'
+          cd /home/long/_/todb18_danhsachlop
+          git fetch --all
+          git switch -C long origin/long
+
+          printf '\n--- run compose up to update flask webapp\n'
+          cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+          ./zcomposebuildup.sh
