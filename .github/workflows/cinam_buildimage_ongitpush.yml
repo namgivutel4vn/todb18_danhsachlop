@@ -4,6 +4,8 @@ on:
   # run when git pushed to branch nam
   push:
     branches: [ci/nam-build]
+  # also allow manual run this ci
+  workflow_dispatch:
 
 #on:
 #  # run when git pushed to branch nam
