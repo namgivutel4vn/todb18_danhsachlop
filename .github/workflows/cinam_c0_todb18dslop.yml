@@ -1,4 +1,4 @@
-name: ciphunp2_todb18dslop
+name: cinam_c0_todb18dslop
 on:
   workflow_dispatch:
 
@@ -11,14 +11,14 @@ jobs:
       - name: --- ssh to vm todb18
         uses: appleboy/ssh-action@v1.0.3
         with:
-          key:      ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          username: phunp2
-          host:     52.221.30.212
+          key:      ${{ secrets.SSH_PRIVATEKEY_NAM }}
+          username: nam
+          host:     47.129.1.184
           script: |
             printf '\n--- git pull latest code\n'
-            cd /home/phunp2/_/todb18_danhsachlop
+            cd /home/nam/_/todb18_danhsachlop
             git fetch --all
-            git switch -C phunp2 origin/phunp2
+            git switch -C nam origin/nam
             
             printf '\n--- run compose up to update flask webapp\n'
             cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker

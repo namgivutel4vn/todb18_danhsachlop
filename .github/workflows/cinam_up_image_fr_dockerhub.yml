@@ -1,0 +1,43 @@
+name: cinam_up_image_fr_dockerhub
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy_job:
+    runs-on: ubuntu-22.04
+    env:
+      SSH_USER: nam
+      SSH_HOST: 52.221.30.212
+    steps:
+      - name: --- add ssh key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATEKEY_NAM }}
+      - name: --- setup known_hosts
+        shell: bash
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H "${{ env.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: --- ssh to vm todb18 then up w/ image fr dockerhub
+        run: |
+          ssh $SSH_USER@$SSH_HOST bash -s << EOSSH
+          set -euo pipefail  # 1st line must align like this when use this heredoc
+          ls -lah
+          pwd
+          
+          set -x
+
+          printf '\n--- git pull latest code\n'
+          cd /home/nam/_/todb18_danhsachlop
+          git fetch --all
+          git switch -C ci/nam-up origin/ci/nam-up  # branch that has this file to up docker-compose--image-fr-dockerhub.yml
+
+          printf '\n--- up stack webapp+apiapp fr image\n'
+          cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker-image-fr-dockerhub
+
+          docker compose \
+            -f ./docker-compose--image-fr-dockerhub.yml \
+            --progress=plain up --force-recreate -d  --remove-orphans  --pull always
+          EOSSH

@@ -1,25 +1,28 @@
-name: ciphunp2_todb18dslop
+name: ci_nguyen_todb18dslop
+
 on:
   workflow_dispatch:
 
 jobs:
-  
   deploy:
     runs-on: ubuntu-22.04
+
     steps:
-      #TODO help me auth the ci runner with my vm only
-      - name: --- ssh to vm todb18
+      - name: SSH deploy to VM (nguyen)
         uses: appleboy/ssh-action@v1.0.3
         with:
-          key:      ${{ secrets.SSH_PRIVATEKEY_PHU }}
-          username: phunp2
-          host:     52.221.30.212
+          host: 52.221.30.212
+          username: nguyen
+          key: ${{ secrets.SSH_PRIVATEKEY_NGUYEN }}
           script: |
             printf '\n--- git pull latest code\n'
-            cd /home/phunp2/_/todb18_danhsachlop
+            cd /home/nguyen/todb18/todb18_danhsachlop
             git fetch --all
-            git switch -C phunp2 origin/phunp2
+            git switch -C nguyen origin/nguyen
             
             printf '\n--- run compose up to update flask webapp\n'
             cd ./docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
             ./zcomposebuildup.sh
+
+
+

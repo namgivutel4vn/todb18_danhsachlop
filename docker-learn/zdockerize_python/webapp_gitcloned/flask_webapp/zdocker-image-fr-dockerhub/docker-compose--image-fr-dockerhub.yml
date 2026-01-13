@@ -1,0 +1,58 @@
+services:
+  #region webapp
+  webapp:
+    depends_on:
+      apiapp:
+        condition: service_healthy
+    image: namgivu/todb18dslop-webapp
+
+    ports:
+      - 33400:5000
+    container_name: flask_webapp_c
+
+    environment:
+      - API_URL_dslop=http://apiapp:5000/dslop
+      #                      apiapp servicename below
+
+    healthcheck:
+      test: |
+        nc -z -w1 127.0.0.1 5000
+        #         127.0.0.1 CAUTION dont use localhost here ; must use 127.0.0.1 instead
+        #  -z zero-data sent
+      retries:  6
+      timeout:  2s
+      interval: 3s
+
+  webapp_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
+    image: busybox  # smallest linux i
+    depends_on:
+      webapp:
+        condition: service_healthy
+    container_name: flask_webapp_c__wait4healthy
+  #endregion webapp
+
+  #TODO mv compose yml into outer dir level to see apiapp and webapp at same folder level eg at ...zdockerize_python/
+  #region apiapp
+  apiapp:
+    image: namgivu/todb18dslop-apiapp
+
+    ports:
+      - 33300:5000
+    container_name: flask_apiapp_c
+
+    healthcheck:
+      test: |
+        nc -z -w1 127.0.0.1 5000
+        #         127.0.0.1 CAUTION dont use localhost here ; must use 127.0.0.1 instead
+        #  -z zero-data sent
+      retries:  6
+      timeout:  2s
+      interval: 3s
+
+  apiapp_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
+    image: busybox  # smallest linux i
+    depends_on:
+      apiapp:
+        condition: service_healthy
+    container_name: flask_apiapp_c__wait4healthy
+  #endregion apiapp
