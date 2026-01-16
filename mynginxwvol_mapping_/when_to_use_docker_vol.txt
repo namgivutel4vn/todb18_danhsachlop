@@ -1,2 +1,0 @@
-00 persist data
-01 input config
