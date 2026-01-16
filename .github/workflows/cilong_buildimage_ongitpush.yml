@@ -59,3 +59,20 @@ jobs:
           i_owner_repo=${{ vars.LONG_DOCKERHUB_USERNAME }}/todb18dslop-apiapp
           docker tag flask-apiapp-i $i_owner_repo
           docker push               $i_owner_repo
+
+      - name: --- test after pushed - 🔔webapp
+        run: |
+          #           =                             owner/repo
+          i_owner_repo=${{ vars.LONG_DOCKERHUB_USERNAME }}/todb18dslop-webapp
+          docker rmi  $i_owner_repo 2>/dev/null || true
+          echo
+          docker pull $i_owner_repo
+
+      - name: --- test after pushed - 🔔apiapp
+        run: |
+          #           =                             owner/repo
+          i_owner_repo=${{ vars.LONG_DOCKERHUB_USERNAME }}/todb18dslop-apiapp
+          docker rmi  $i_owner_repo 2>/dev/null || true
+          echo
+          docker pull $i_owner_repo
+
