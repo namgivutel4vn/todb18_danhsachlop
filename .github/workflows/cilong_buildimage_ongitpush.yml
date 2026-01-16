@@ -3,8 +3,7 @@ name: cilong_buildimage_ongitpush
 
 on: 
   push:
-    branches:
-    - long
+    branches: [ci/long-build]
   workflow_dispatch:
 
 jobs:
