@@ -1,7 +1,9 @@
 name: cinguyen_gitpush
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - nguyen
 
 jobs:
   job1_name:
