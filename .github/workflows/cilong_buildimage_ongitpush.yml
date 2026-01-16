@@ -5,7 +5,8 @@ on:
   push:
     branches:
     - long
- 
+  workflow_dispatch:
+
 jobs:
   deploy_job:
     runs-on: ubuntu-22.04
