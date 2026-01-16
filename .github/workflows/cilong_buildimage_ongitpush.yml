@@ -12,5 +12,6 @@ jobs:
     steps:
 
     - name: check date
-      run: date
-           echo TODO ci/long build
+      run: |
+        date
+        echo TODO ci/long build
