@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
 
-    - name: check date
-      run: |
-        date
-        echo TODO ci/long build
+      - name: --- checkout source code
+        uses: actions/checkout@v4
+
+      - name: --- print code info
+        run: |
+          echo;ls -lah;echo
+          echo;pwd;echo
+          git log -n2 --oneline
