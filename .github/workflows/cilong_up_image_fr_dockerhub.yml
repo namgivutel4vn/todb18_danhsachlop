@@ -7,7 +7,7 @@ jobs:
   deploy_job:
     runs-on: ubuntu-22.04
     env:
-      SSH_USER: nam
+      SSH_USER: long
       SSH_HOST: 52.221.30.212
     steps:
       - name: --- add ssh key
