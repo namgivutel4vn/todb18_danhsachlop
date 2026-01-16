@@ -4,10 +4,10 @@ services:
     depends_on:
       apiapp:
         condition: service_healthy
-    image: coldshort/todb18dslop-webapp
+    image: namgivu/todb18dslop-webapp
 
     ports:
-      - 11400:5000
+      - 33400:5000
     container_name: flask_webapp_c
 
     environment:
@@ -34,10 +34,10 @@ services:
   #TODO mv compose yml into outer dir level to see apiapp and webapp at same folder level eg at ...zdockerize_python/
   #region apiapp
   apiapp:
-    image: coldshort/todb18dslop-apiapp
+    image: namgivu/todb18dslop-apiapp
 
     ports:
-      - 11300:5000
+      - 33300:5000
     container_name: flask_apiapp_c
 
     healthcheck:
