@@ -1,0 +1,15 @@
+name: cilong_buildimage_ongitpush
+
+
+on: 
+  push:
+    branches:
+    - long
+ 
+jobs:
+  deploy_job:
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: check date
+      run: date
