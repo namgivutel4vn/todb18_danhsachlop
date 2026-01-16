@@ -1,0 +1,18 @@
+services:
+  c:
+    # build: .
+    # ie
+    # build:
+    #   context:    .             # dir/ contain this yml file
+    #   dockerfile: ./Dockerfile
+    ###
+    # vs
+    build: .
+    #      . ie context dir/ same dir w/ 'this-yml-containing dir'
+    #      . ie Dockerfile in this context dir/ also
+
+    image: flask-apiapp-i
+
+    ports:
+      - 33300:5000
+    container_name: flask_apiapp_c

@@ -1,0 +1,69 @@
+services:
+  #region webapp
+  webapp:
+    depends_on:
+      apiapp:
+        condition: service_healthy
+
+    build:
+     #context ie dir/ containing this yml file
+     #context: ...flask_webapp/
+      context:            ./../
+      dockerfile:             ./zdocker/Dockerfile
+     #dockerfile              . ie relative to :context dir/ above
+    image: flask-webapp-i
+
+    ports:
+      - 33400:5000
+    container_name: flask_webapp_c
+
+    environment:
+      - API_URL_dslop=http://apiapp:5000/dslop
+      #                      apiapp servicename below
+
+    healthcheck:
+      test: |
+        nc -z -w1 127.0.0.1 5000
+        #         127.0.0.1 CAUTION dont use localhost here ; must use 127.0.0.1 instead
+        #  -z zero-data sent
+      retries:  6
+      timeout:  2s
+      interval: 3s
+
+  webapp_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
+    image: busybox  # smallest linux i
+    depends_on:
+      webapp:
+        condition: service_healthy
+    container_name: flask_webapp_c__wait4healthy
+  #endregion webapp
+
+  #TODO mv compose yml into outer dir level to see apiapp and webapp at same folder level eg at ...zdockerize_python/
+  #region apiapp
+  apiapp:
+    build:
+     #context: ...zdockerize_python/
+      context:             ../../../apiapp_gitcloned/flask_apiapp
+      dockerfile:                                                ../zdocker/Dockerfile
+    image: flask-apiapp-i
+
+    ports:
+      - 33300:5000
+    container_name: flask_apiapp_c
+
+    healthcheck:
+      test: |
+        nc -z -w1 127.0.0.1 5000
+        #         127.0.0.1 CAUTION dont use localhost here ; must use 127.0.0.1 instead
+        #  -z zero-data sent
+      retries:  6
+      timeout:  2s
+      interval: 3s
+
+  apiapp_wait4healthy:  # this c is f waiting until flask_apiapp_c is healthy
+    image: busybox  # smallest linux i
+    depends_on:
+      apiapp:
+        condition: service_healthy
+    container_name: flask_apiapp_c__wait4healthy
+  #endregion apiapp
