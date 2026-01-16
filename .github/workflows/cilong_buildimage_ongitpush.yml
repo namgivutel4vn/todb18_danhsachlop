@@ -35,8 +35,8 @@ jobs:
       - name: --- login dockerhub to push image
         uses: docker/login-action@v3
         with:
-          username: ${{ vars.NAM_DOCKERHUB_USERNAME }}
-          password: ${{ secrets.NAM_DOCKERHUB_TOKEN }}
+          username: ${{ vars.LONG_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.LONG_DOCKERHUB_TOKEN }}
 
       - name: --- tag n push image - 🔔webapp
         run: |
@@ -45,7 +45,7 @@ jobs:
           # reaching here ensured we have flask-webapp-i
           
           #           =                             owner/repo
-          i_owner_repo=${{ vars.NAM_DOCKERHUB_USERNAME }}/todb18dslop-webapp
+          i_owner_repo=${{ vars.LONG_DOCKERHUB_USERNAME }}/todb18dslop-webapp
           docker tag flask-webapp-i $i_owner_repo
           docker push               $i_owner_repo
 
@@ -56,6 +56,6 @@ jobs:
           # reaching here ensured we have flask-apiapp-i
           
           #           =                             owner/repo
-          i_owner_repo=${{ vars.NAM_DOCKERHUB_USERNAME }}/todb18dslop-apiapp
+          i_owner_repo=${{ vars.LONG_DOCKERHUB_USERNAME }}/todb18dslop-apiapp
           docker tag flask-apiapp-i $i_owner_repo
           docker push               $i_owner_repo
