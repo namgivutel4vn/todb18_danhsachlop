@@ -7,3 +7,8 @@ thuchien docker build xac may $i va day len docker hub cua ban ; vidu tai $i=nam
 thuchien docker up    xac may $i
 
 ci up co buoc/step test de kiemtra ketqua
+
+---
+
+tao github repo rieng de lam bai cuoikhoa cua minh
+them github id cua Nam la namgivu vao quyen admin de N cham bai cho minh a
