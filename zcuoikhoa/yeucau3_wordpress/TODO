@@ -1,0 +1,9 @@
+tao ci yml build tai .github/workflows/ci${tencuaban}_yeucau3_wordpress_build.yml
+tao ci yml up    tai .github/workflows/ci${tencuaban}_yeucau3_wordpress_up.yml
+vidu                 .github/workflows/cinam_yeucau3_wordpress_build.yml
+vidu                 .github/workflows/cinam_yeucau3_wordpress_up.yml
+
+thuchien docker build xac may $i va day len docker hub cua ban ; vidu tai $i=namgivu/todb18-cuoikhoa-yeucau3-wordpress
+thuchien docker up    xac may $i
+
+ci up co buoc/step test de kiemtra ketqua
