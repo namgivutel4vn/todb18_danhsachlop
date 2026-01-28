@@ -1,0 +1,27 @@
+name: ci_nguyen_deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: SSH deploy to VM 
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 52.221.30.212
+          username: nguyen
+          key: ${{ secrets.SSH_PRIVATE_NGUYEN }}
+          script: |
+            echo "----- Pull latest code -----"
+            cd /home/nguyen/_/todb18_danhsachlop
+            git fetch --all
+            git switch -C nguyen origin/nguyen
+
+            echo "----- Build & deploy containers -----"
+            cd docker-learn/zdockerize_python/webapp_gitcloned/flask_webapp/zdocker
+            ./zcomposebuildup.sh
+
+            echo "----- Deploy done -----"
